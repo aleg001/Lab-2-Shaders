@@ -74,7 +74,7 @@ class Shader:
         g *= finalValue
         r *= finalValue
 
-        if finalValue < 0.30 and finalValue > 0.10 and finalValue < 0.35:
+        if finalValue < 0.30 and finalValue > 0.10 and finalValue < 0.305:
             r, g, b = (0, 0, 0.3)
 
         if finalValue < 0.10 and finalValue > 0.05:
@@ -141,6 +141,14 @@ class Shader:
 
         if finalValue > 0.67 and finalValue < 0.69:
             r, g, b = (0.30, 0.21, 1)
+
+        for i in range(0, len(tN) - 1):
+            result += tN[i] + invertedLight[i]
+        finalValue = result
+
+        b *= finalValue / 3.5
+        g *= finalValue / 3.5
+        r *= finalValue / 3.5
 
         if finalValue > 0:
             return r, g, b

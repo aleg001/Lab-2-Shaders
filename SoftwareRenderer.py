@@ -135,6 +135,7 @@ def Lab1(filename):
 
 def Lab2(filename):
     r = Render(1920, 1080)
+
     r.shaderUsed = Shader.neptuneShader
 
     r.glModel(
