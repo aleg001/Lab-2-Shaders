@@ -145,6 +145,15 @@ def Lab2(filename):
         rotation=V3(90, 190, 90),
     )
 
+    r.shaderUsed = Shader.flatShading
+
+    r.glModel(
+        "anillo.obj",
+        translation=V3(1000, 460, 1500),
+        scalationFactor=V3(10000, 10000, 10000),
+        rotation=V3(90, 190, 90),
+    )
+
     r.glFinish(filename)
 
     im = Image.open(filename)

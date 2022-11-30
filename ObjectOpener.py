@@ -55,7 +55,6 @@ https://cglearn.codelight.eu/pub/computer-graphics/shading-and-lighting
 
 
 class Shader:
-    @staticmethod
     def neptuneShader(render, **kwargs) -> None:
         b, g, r = kwargs["colorU"]
         tN = kwargs["triangleNormal"]
@@ -146,9 +145,39 @@ class Shader:
             result += tN[i] + invertedLight[i]
         finalValue = result
 
-        b *= finalValue / 3.5
-        g *= finalValue / 3.5
-        r *= finalValue / 3.5
+        b *= finalValue / 3.3
+        g *= finalValue / 3.3
+        r *= finalValue / 3.3
+
+        if finalValue > 0:
+            return r, g, b
+        return 0, 0, 0
+
+    def flatShading(render, **kwargs) -> None:
+        b, g, r = kwargs["colorU"]
+        tN = kwargs["triangleNormal"]
+
+        r, g, b = (46 / 255, 57 / 255, 146 / 255)
+
+        luzDirecta = [render.luzDirecta.x, render.luzDirecta.y, render.luzDirecta.z]
+        invertedLight = [(-i + 0.3) for i in luzDirecta]
+
+        result = 0
+        for i in range(0, len(tN)):
+            result += tN[i] * invertedLight[i]
+        finalValue = result + 0.1
+
+        b *= finalValue
+        g *= finalValue
+        r *= finalValue
+
+        for i in range(0, len(tN) - 1):
+            result += tN[i] + invertedLight[i]
+        finalValue = result
+
+        b *= finalValue / 3.3
+        g *= finalValue / 3.3
+        r *= finalValue / 3.3
 
         if finalValue > 0:
             return r, g, b
