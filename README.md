@@ -13,7 +13,9 @@ El objetivo de este laboratorio es que practiquen los conceptos que hemos aprend
 
 ✅ No usar materiales
 
-Total: 🔥 100 puntos 🔥
+✅ Sistema de anillos de los planetas gaseosos 
+
+Total: 🔥 130 puntos 🔥
 
 #### Para ejecutar:
 1. Correr el main.py
